@@ -1,8 +1,8 @@
 import React from "react";
 
-function Footer() {
+function FooterComponent() {
   return (
-    <div className="Footer">
+    <div className="FooterComponent">
       <footer className="bg-[#0f172a] w-full">
         <div className="mx-40 max-w-screen px-4  sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
@@ -181,4 +181,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterComponent;
