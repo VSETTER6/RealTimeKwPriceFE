@@ -1,8 +1,8 @@
 import React from "react";
 
-function Header() {
+function HeaderComponent() {
   return (
-    <div className="Header">
+    <div className="HeaderComponent">
       <header className="bg-[#0f172a]">
         <div className="max-w-screen mx-7">
           <div className="flex h-20 items-center justify-between">
@@ -144,4 +144,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderComponent;
