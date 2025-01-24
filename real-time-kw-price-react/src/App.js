@@ -1,18 +1,24 @@
 import "./App.css";
-import Footer from "./components/footer/FooterComponent";
-import Header from "./components/header/HeaderComponent";
-import HomeContent from "./components/home/HomeComponent";
-import Main from "./components/main/MainComponent";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import LoginPage from "./pages/login/LoginPage";
+import RegisterPage from "./pages/register/RegisterPage";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <Main className="flex-grow">
-        <HomeContent />
-      </Main>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </Router>
   );
 }
 
