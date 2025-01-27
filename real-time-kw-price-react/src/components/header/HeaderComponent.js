@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HeaderComponent() {
   return (
@@ -7,7 +8,7 @@ function HeaderComponent() {
         <div className="max-w-screen mx-7">
           <div className="flex h-20 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
-              <a className="block text-[#ffd700]" href="#">
+              <Link className="block text-[#ffd700]" to="/home">
                 <span className="sr-only">Home</span>
                 <svg
                   className="h-8"
@@ -56,7 +57,7 @@ function HeaderComponent() {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             <div className="hidden md:block">
@@ -103,19 +104,19 @@ function HeaderComponent() {
 
             <div className="flex items-center gap-4">
               <div className="flex gap-4">
-                <a
+                <Link
                   className="rounded-md px-5 py-2.5 text-sm font-medium text-white bg-[#ffd700] hover:bg-[#ccac00] sm:gap-4"
-                  href="#"
+                  to="/login"
                 >
                   Login
-                </a>
+                </Link>
 
-                <a
+                <Link
                   className="rounded-md px-5 py-2.5 text-sm font-medium text-white bg-[#04a4ff] hover:bg-[#0383cc] sm:gap-4"
-                  href="#"
+                  to="/register"
                 >
                   Register
-                </a>
+                </Link>
               </div>
 
               <div className="block md:hidden">
