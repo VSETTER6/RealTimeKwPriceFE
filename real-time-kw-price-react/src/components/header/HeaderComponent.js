@@ -8,7 +8,9 @@ function HeaderComponent() {
         <div className="max-w-screen mx-7">
           <div className="flex h-20 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
-              <Link className="flex items-center text-[#ffd700]" to="/home">
+              <Link
+                className="flex items-center text-[#ffd700]"
+                to="/home">
                 <div className="mr-1">
                   <img
                     src="images\icons\real-time-kw-price-logo.png"
@@ -29,8 +31,7 @@ function HeaderComponent() {
                   <li>
                     <a
                       className=" text-base text-[#cbd5e1] hover:text-[#94a3b8] hover:text-lg"
-                      href="#"
-                    >
+                      href="#">
                       Elbolag
                     </a>
                   </li>
@@ -38,8 +39,7 @@ function HeaderComponent() {
                   <li>
                     <a
                       className="text-base text-[#cbd5e1] hover:text-[#94a3b8] hover:text-lg"
-                      href="#"
-                    >
+                      href="#">
                       Elområden
                     </a>
                   </li>
@@ -47,8 +47,7 @@ function HeaderComponent() {
                   <li>
                     <a
                       className="text-base text-[#cbd5e1] hover:text-[#94a3b8] hover:text-lg"
-                      href="#"
-                    >
+                      href="#">
                       Elpriser
                     </a>
                   </li>
@@ -56,8 +55,7 @@ function HeaderComponent() {
                   <li>
                     <a
                       className="text-base text-[#cbd5e1] hover:text-[#94a3b8] hover:text-lg"
-                      href="#"
-                    >
+                      href="#">
                       Om oss
                     </a>
                   </li>
@@ -69,15 +67,13 @@ function HeaderComponent() {
               <div className="flex gap-4">
                 <Link
                   className="rounded-md px-5 py-2.5 text-sm font-medium text-white bg-[#ffd700] hover:bg-[#ccac00] sm:gap-4"
-                  to="/login"
-                >
+                  to="/login">
                   Login
                 </Link>
 
                 <Link
                   className="rounded-md px-5 py-2.5 text-sm font-medium text-white bg-[#04a4ff] hover:bg-[#0383cc] sm:gap-4"
-                  to="/register"
-                >
+                  to="/register">
                   Register
                 </Link>
               </div>
@@ -90,8 +86,7 @@ function HeaderComponent() {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth="2"
-                  >
+                    strokeWidth="2">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
