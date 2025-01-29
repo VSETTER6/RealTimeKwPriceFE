@@ -1,7 +1,45 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 /* @tailwindcss/forms */
 
+
 function LoginComponent() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form submitted"); 
+    try {
+      //THIS NEED TO BE THE URL OF THE BACKEND
+      const response = await axios.post("http://localhost:3000/login", {
+        email,
+        password,
+      });
+
+      if(response.status !== 200) 
+        {
+          console.log("Response received"); 
+          const token = response.data;
+          console.log(token);
+          
+          // saving the token in localstorage (the computer)
+          localStorage.setItem("token", token);
+          navigate("/home");
+        }
+      else{
+        console.log("Response not received");
+        setError("Invalid email or password. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error logging in", error);
+      setError("Invalid email or password. Please try again.");
+    }
+  };
+
   return (
     <div>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
