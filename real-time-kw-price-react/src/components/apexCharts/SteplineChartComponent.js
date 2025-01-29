@@ -76,7 +76,7 @@ const StepLineChartComponent = () => {
     };
   }, []);
 
-  return <div id="chart" className="mt-12"></div>;
+  return <div id="chart" className="mb-20 mt-10"></div>;
 };
 
 export default StepLineChartComponent;
