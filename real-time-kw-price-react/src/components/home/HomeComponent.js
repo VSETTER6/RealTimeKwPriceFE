@@ -1,12 +1,14 @@
 import React from "react";
 import TasksKwPriceComponent from "../hyperUI/TasksKwPriceComponent";
 import StepLineChartComponent from "../apexCharts/SteplineChartComponent";
+import SectionComponent from "../section/SectionComponent";
 
 function HomeComponent() {
   return (
     <div>
-      <TasksKwPriceComponent />
       <StepLineChartComponent />
+      <SectionComponent />
+      <TasksKwPriceComponent />
     </div>
   );
 }
