@@ -15,10 +15,16 @@ function LoginComponent() {
     console.log("Form submitted"); 
     try {
       //THIS NEED TO BE THE URL OF THE BACKEND
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("https://localhost:7160/api/LoginUser/login", {
         email,
         password,
-      });
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
       if(response.status !== 200) 
         {
@@ -56,6 +62,7 @@ function LoginComponent() {
           <form
             action="#"
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            onSubmit={handleSubmit}
           >
             <p className="text-center text-lg font-medium">
               Sign in to your account
@@ -71,6 +78,8 @@ function LoginComponent() {
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -102,6 +111,7 @@ function LoginComponent() {
                   type="password"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -129,6 +139,11 @@ function LoginComponent() {
               </div>
             </div>
 
+            {error && (
+              <p className="text-center text-red-500">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
