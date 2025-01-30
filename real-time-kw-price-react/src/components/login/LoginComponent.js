@@ -26,7 +26,7 @@ function LoginComponent() {
       }
     );
 
-      if(response.status !== 200) 
+      if(response.status == 200) 
         {
           console.log("Response received"); 
           const token = response.data;
