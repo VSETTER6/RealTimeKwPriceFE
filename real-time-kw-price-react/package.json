@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@tailwindcss/forms": "^0.5.10",
+    "axios": "^1.7.9",
     "apexcharts": "^4.4.0",
     "cra-template": "1.2.0",
     "react": "^19.0.0",

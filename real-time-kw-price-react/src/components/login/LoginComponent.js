@@ -1,7 +1,51 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 /* @tailwindcss/forms */
 
+
 function LoginComponent() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form submitted"); 
+    try {
+      //THIS NEED TO BE THE URL OF THE BACKEND
+      const response = await axios.post("https://localhost:7160/api/LoginUser/login", {
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+      if(response.status !== 200) 
+        {
+          console.log("Response received"); 
+          const token = response.data;
+          console.log(token);
+          
+          // saving the token in localstorage (the computer)
+          localStorage.setItem("token", token);
+          navigate("/home");
+        }
+      else{
+        console.log("Response not received");
+        setError("Invalid email or password. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error logging in", error);
+      setError("Invalid email or password. Please try again.");
+    }
+  };
+
   return (
     <div>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -17,7 +61,9 @@ function LoginComponent() {
 
           <form
             action="#"
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            onSubmit={handleSubmit}
+          >
             <p className="text-center text-lg font-medium">
               Sign in to your account
             </p>
@@ -34,6 +80,8 @@ function LoginComponent() {
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -66,6 +114,7 @@ function LoginComponent() {
                   type="password"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -92,6 +141,11 @@ function LoginComponent() {
               </div>
             </div>
 
+            {error && (
+              <p className="text-center text-red-500">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
