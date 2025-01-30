@@ -69,7 +69,9 @@ function LoginComponent() {
             </p>
 
             <div>
-              <label htmlFor="email" className="sr-only">
+              <label
+                htmlFor="email"
+                className="sr-only">
                 Email
               </label>
 
@@ -88,8 +90,7 @@ function LoginComponent() {
                     className="size-4 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -102,7 +103,9 @@ function LoginComponent() {
             </div>
 
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label
+                htmlFor="password"
+                className="sr-only">
                 Password
               </label>
 
@@ -120,8 +123,7 @@ function LoginComponent() {
                     className="size-4 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                    stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -146,14 +148,15 @@ function LoginComponent() {
             )}
             <button
               type="submit"
-              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-            >
+              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
               Sign in
             </button>
 
             <p className="text-center text-sm text-gray-500">
               No account?
-              <a className="underline" href="#">
+              <a
+                className="underline"
+                href="#">
                 Sign up
               </a>
             </p>

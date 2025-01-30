@@ -8,6 +8,7 @@ import {
 import HomePage from "../src/pages/home/HomePage";
 import LoginPage from "../src/pages/login/LoginPage";
 import RegisterPage from "../src/pages/register/RegisterPage";
+import UserSettingsPage from "./pages/user/UserSettingsPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/usersettings" element={<UserSettingsPage />} />
       </Routes>
     </Router>
   );
