@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 /* @tailwindcss/forms */
 
-
 function LoginComponent() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -12,31 +11,31 @@ function LoginComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted"); 
+    console.log("Form submitted");
     try {
       //THIS NEED TO BE THE URL OF THE BACKEND
-      const response = await axios.post("https://localhost:7160/api/LoginUser/login", {
-        email,
-        password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-      if(response.status == 200) 
+      const response = await axios.post(
+        "https://localhost:7160/api/LoginUser/login",
         {
-          console.log("Response received"); 
-          const token = response.data;
-          console.log(token);
-          
-          // saving the token in localstorage (the computer)
-          localStorage.setItem("token", token);
-          navigate("/home");
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      else{
+      );
+
+      if (response.status == 200) {
+        console.log("Response received");
+        const token = response.data;
+        console.log(token);
+
+        // saving the token in localstorage (the computer)
+        localStorage.setItem("token", token);
+        navigate("/home");
+      } else {
         console.log("Response not received");
         setError("Invalid email or password. Please try again.");
       }
@@ -51,19 +50,18 @@ function LoginComponent() {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-            Get started today
+            Logga in på Real Time KW Price
           </h1>
 
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            sunt dolores deleniti inventore quaerat mollitia?
+            Logga in hos Real Time KW Price för att få upp elpriserna i din
+            region direkt. Fyll i din email och lösenord för att logga in.
           </p>
 
           <form
             action="#"
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-            onSubmit={handleSubmit}
-          >
+            onSubmit={handleSubmit}>
             <p className="text-center text-lg font-medium">
               Sign in to your account
             </p>
@@ -79,7 +77,7 @@ function LoginComponent() {
                 <input
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -113,7 +111,7 @@ function LoginComponent() {
                 <input
                   type="password"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter password"
+                  placeholder="Lösenord"
                   onChange={(e) => setPassword(e.target.value)}
                 />
 
@@ -141,11 +139,7 @@ function LoginComponent() {
               </div>
             </div>
 
-            {error && (
-              <p className="text-center text-red-500">
-                {error}
-              </p>
-            )}
+            {error && <p className="text-center text-red-500">{error}</p>}
             <button
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
@@ -155,7 +149,7 @@ function LoginComponent() {
             <p className="text-center text-sm text-gray-500">
               No account?
               <a
-                className="underline"
+                className="underline ml-1"
                 href="#">
                 Sign up
               </a>
