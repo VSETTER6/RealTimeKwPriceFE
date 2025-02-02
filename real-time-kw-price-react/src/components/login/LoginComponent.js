@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 /* @tailwindcss/forms */
 
 function LoginComponent() {
@@ -55,7 +56,7 @@ function LoginComponent() {
 
           <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
             Logga in hos Real Time KW Price för att få upp elpriserna i din
-            region direkt. Fyll i din email och lösenord för att logga in.
+            region direkt. Fyll i din email och ditt lösenord för att logga in.
           </p>
 
           <form
@@ -143,16 +144,16 @@ function LoginComponent() {
             <button
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
-              Sign in
+              Logga in
             </button>
 
             <p className="text-center text-sm text-gray-500">
-              No account?
-              <a
+              Inget konto?
+              <Link
                 className="underline ml-1"
-                href="#">
-                Sign up
-              </a>
+                to="/register">
+                Skapa konto
+              </Link>
             </p>
           </form>
         </div>
