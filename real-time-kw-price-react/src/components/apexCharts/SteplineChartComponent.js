@@ -6,6 +6,7 @@ const StepLineChartComponent = () => {
   const [region, setRegion] = useState("SE1"); // Standardregion SE1
   const [electricityPrices, setElectricityPrices] = useState([]);
   const chartRef = useRef(null); // Referens till grafcontainern
+  const chartInstance = useRef(null);
 
   // Hämta elpriser från API
   useEffect(() => {
@@ -92,18 +93,18 @@ const StepLineChartComponent = () => {
     };
 
     // Ta bort tidigare graf om den finns
-    if (chartRef.current.chart) {
-      chartRef.current.chart.destroy();
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
     }
 
     // Skapa och rendera grafen
-    chartRef.current.chart = new ApexCharts(chartRef.current, options);
-    chartRef.current.chart.render();
+    chartInstance.current = new ApexCharts(chartRef.current, options);
+    chartInstance.current.render();
 
     // Rensa upp vid avmontering
     return () => {
-      if (chartRef.current.chart) {
-        chartRef.current.chart.destroy();
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
       }
     };
   }, [electricityPrices]); // Kör när elpriserna ändras
