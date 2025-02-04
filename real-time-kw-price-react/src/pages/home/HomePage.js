@@ -9,7 +9,7 @@ function HomePage() {
     <div className="flex flex-col min-h-screen">
       <HeaderComponent />
       <MainComponent className="flex-grow">
-        <HomeComponent />
+        <HomeComponent region="SE1" />
       </MainComponent>
       <FooterComponent />
     </div>

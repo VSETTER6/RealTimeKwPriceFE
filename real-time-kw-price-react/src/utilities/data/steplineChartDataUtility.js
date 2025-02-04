@@ -1,20 +1,19 @@
-export const steplineChartDataUtility = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth(); // 0 = januari, 1 = februari osv.
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+import axios from "axios";
 
-  const data = [];
-
-  const formatNumber = (num) => parseFloat(num.toFixed(2));
-
-  for (let i = 1; i <= daysInMonth; i++) {
-    const date = new Date(year, month, i).toISOString().split("T")[0]; // Format YYYY-MM-DD
-    data.push({
-      x: date, // ISO-sträng för bättre kompatibilitet
-      y: formatNumber(Math.random() * 500),
-    });
+export const steplineChartDataUtility = async (region) => {
+  try {
+    const response = await axios.get(`/api/ElectricityPrice/${region}`); // Skapar en variabel respones som lagarar API:et.
+    return response.data; // Retunera data som hämtas från API.
+  } catch (err) {
+    console.error("Fel vid hämtning av data:", err); // Ger tillbaka error om något går fel.
+    return []; // Ger tillbaka en tom lista om något går fel.
   }
+};
 
-  return data;
+export const formatChartData = (electricityPrices) => {
+  return electricityPrices.map((price) => ({
+    // Map tar en befintlig lista och formaterar den till en ny.
+    x: price.timestamp, // Här använder vi timestamp som x-axel
+    y: price.price, // Och price som y-axel
+  }));
 };
